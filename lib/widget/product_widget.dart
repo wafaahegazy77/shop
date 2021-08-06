@@ -10,6 +10,7 @@ class ProductWidget extends StatefulWidget {
 
 class _ProductWidgetState extends State<ProductWidget> {
   var _num = 1;
+  bool isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +27,15 @@ class _ProductWidgetState extends State<ProductWidget> {
               Column(
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(Icons.favorite_border),
+                    onPressed: () {
+                      setState(() {
+                        isClicked = !isClicked;
+                      });
+                    },
+                    child: isClicked
+                        ? Icon(Icons.favorite)
+                        : Icon(Icons.favorite_border),
+                    // child: Icon(Icons.favorite_border),
                     style: TextButton.styleFrom(
                         backgroundColor: Color(0xff495057), elevation: 0),
                   )
